@@ -12,33 +12,31 @@
     <script src="./08-哈希表封装.js"></script>
     <script>
 
-        // const hash = new Hash();
-        // hash.set('11231', 'asd');
-        // hash.set('asdad', 'dasda');
-        // hash.set('周', '周杨杰')
-        // console.log(hash);
-        // const map = new Map();
-        // map.set(1, 2);
-        // map.set(2, 3)
-        // console.log(map);
-        // const aaa = {
-        //     key: 1,
-        //     value: 2
-        // }
-        // console.log(aaa);
-        // console.log(map.size);
-        // var aaaaaa = Object.getOwnPropertyDescriptor(map, "size");
-        // console.log(aaaaaa);
+        const hash = new Hash();
+        hash.set('11231', 'asd');
+        hash.set('1', 'dddd');
+        const aaa = {
+            a: 123
+        };
+        hash.set('223', aaa)
+        hash.set('周', '周杨杰')
+        hash.set('test1', '周杨杰')
+        hash.set('test2', '周杨杰')
+        hash.set('test3', '周杨杰')
+        hash.set('test4', '周杨杰')
+        hash.set('test5', '周杨杰')
+        hash.set('test6', '周杨杰')
+        hash.delete('test1')
+        hash.delete('test2')
+        hash.delete('test3')
+        hash.delete('test4')
+        hash.delete('test5')
+        hash.delete('223')
+        console.log(hash);
+        console.log(hash.get('周'));
 
-        class Fun {
-            constructor() {
-                // this.size = this
-            }
-            get size() {
-                return 2;
-            }
-        }
-        console.log(new Fun());
+
+
     </script>
 </body>
 
