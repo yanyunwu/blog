@@ -102,6 +102,80 @@ class BinarySearchTree {
         return false;
 
     }
+    // 树结构的删除操作，较为复杂
+    remove(key) {
+        let node = this.root;
+        let parent = null;
+        let isLeft = undefined;
+        while (node) {
+            if (key < node.key) {
+                parent = node;
+                isLeft = true;
+                node = node.left;
+            } else if (key > node.key) {
+                parent = node;
+                isLeft = false;
+                node = node.right;
+            } else {
+                // 该节点没有子节点
+                if (!node.left && !node.right) {
+                    if (node === this.root) {
+                        this.root = null;
+                    } else {
+                        if (isLeft) {
+                            parent.left = null;
+                        } else {
+                            parent.right = null;
+                        }
+                    }
+                }
+                // 该节点只有一个子节点
+                else if (node.left && node.right) {
+                    if (node === this.root) {
+                        let deleteNode = this.root;
+                        this.root = this._getSuccess(this.root.left);
+                        this.root.right = deleteNode.right;
+                    } else {
+                        if (isLeft) {
+                            parent.left = this._getSuccess(node.left);
+                            parent.left.right = node.right;
+                        } else {
+                            parent.right = this._getSuccess(node.left);
+                            parent.right.right = node.right;
+                        }
+                    }
+
+                }
+                // 该节点有两个子节点
+                else {
+                    if (node === this.root) {
+                        this.root = node.left || node.right;
+                    } else {
+                        if (isLeft) {
+                            parent.left = node.left || node.right;
+                        } else {
+                            parent.right = node.left || node.right;
+                        }
+                    }
+                }
+                break;
+            }
+        }
+    }
+    // 获取后继的节点
+    _getSuccess(node) {
+        let root = node;
+        let parent = null;
+        while (node.right) {
+            parent = node;
+            node = node.right;
+        }
+        if (node !== root) {
+            parent.right = null;
+        }
+
+        return node;
+    }
 }
 
 // const tree = new BinarySearchTree();

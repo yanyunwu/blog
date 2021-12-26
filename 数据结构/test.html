@@ -37,13 +37,16 @@
         // console.log(hash.get('周'));
 
         const tree = new BinarySearchTree();
-        tree.insert(2).insert(1).insert(3).insert(2).insert(0).insert(1);
+        tree.insert(5).insert(4).insert(8).insert(7).insert(9).insert(3).insert(3)
         console.log(tree);
         console.log(tree.preOrder());
-        console.log(tree.min);
-        console.log(tree.max);
-        console.log(tree.search(1));
-        console.log(tree.search(11));
+        // console.log(tree.min);
+        // console.log(tree.max);
+        // console.log(tree.search(1));
+        // console.log(tree.search(11));
+        tree.remove(3);
+        console.log(tree.preOrder());
+
 
     </script>
 </body>
