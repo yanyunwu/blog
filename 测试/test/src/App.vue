@@ -5,19 +5,22 @@
       <button @click="setObj">改对象</button>
       <button @click="setName">改名1</button>
     </div>
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div>
+      <input type="text" name="" id="" v-focus />
+    </div>
+    <div>
+      <Test :level="2"><span>21314</span></Test>
+    </div>
+    <div>
+      {{ $store.state.msg }}
+      <button @click="$store.commit('changeMsg', '已改变')">改变</button>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
 export default {
   name: "App",
-  components: {
-    HelloWorld,
-  },
   data() {
     return {
       obj: {
@@ -36,6 +39,10 @@ export default {
     setName() {
       this.obj.name = "小白";
     },
+  },
+  created() {
+    // console.log(this.$options.name);
+    console.log(this.$store.state.msg);
   },
 };
 </script>

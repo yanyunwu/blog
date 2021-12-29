@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Fun2 {
+            constructor() {
+
+            }
+
+            say() {
+                console.log('Fun2');
+            }
+        }
+
+        (function () {
+            // Fun.prototype.__proto__ = Fun2.prototype;
+            // Fun.prototype = new Fun2();
+            Object.setPrototypeOf(Fun.prototype, Fun2.prototype)
+            Fun.prototype.constructor = Fun;
+            Object.setPrototypeOf(Fun, Fun2);
+        })();
+
+        function Fun() {
+            this.aaa = 1
+            Fun.prototype.say1 = function () {
+
+            }
+        }
+
+        // class Fun extends Fun2 {
+        //     constructor() {
+        //         super();
+        //     }
+
+        //     say1() {
+        //         console.log('Fun');
+        //     }
+        // }
+
+        let fun = new Fun();
+        // console.log(Fun2 instanceof Function);
+        // console.log(Fun.constructor === Function);
+        // console.log(fun instanceof Fun.prototype.constructor);
+
+        console.dir(fun);
+        // console.log(fun.__proto__);
+        // fun.say();
+
+
+        // console.log(Fun.prototype instanceof Fun2);
+
+    </script>
+</body>
+
+</html>
