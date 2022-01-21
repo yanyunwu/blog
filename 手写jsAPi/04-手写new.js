@@ -17,3 +17,5 @@ Fun.prototype.say = function () {
 
 const v = New(Fun, 111);
 v.say();
+
+export default New;
