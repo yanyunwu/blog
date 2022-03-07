@@ -1,2 +1,0 @@
-e: true,
-    enumerable: true,

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 动画代码 */
+        @keyframes example {
+            0% {
+                background-image: url('./static/220229\ box1\ 旋转.76.1.jpg');
+            }
+
+            5% {
+                background-image: url('./static/220229\ box1\ 旋转.76.2.jpg');
+            }
+
+            10% {
+                background-image: url('./static/220229\ box1\ 旋转.76.3.jpg');
+            }
+
+            15% {
+                background-image: url('./static/220229\ box1\ 旋转.76.4.jpg');
+            }
+
+            20% {
+                background-image: url('./static/220229\ box1\ 旋转.76.5.jpg');
+            }
+
+            100% {
+
+                background-image: url('./static/220229\ box1\ 旋转.76.6.jpg');
+            }
+
+        }
+
+        /* 向此元素应用动画效果 */
+        .box {
+            width: 100px;
+            height: 100px;
+            animation-name: example;
+            animation-duration: 4s;
+        }
+
+        .box {
+            width: 500px;
+            height: 500px;
+            background-image: url('./static/220229\ box1\ 旋转.76.1.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

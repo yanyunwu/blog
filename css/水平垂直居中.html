@@ -1,12 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            position: relative;
+            height: 100vh;
+        }
+
+        .text-algin-center {
+            text-align: center;
+        }
+/* qq */
+        .a {
+            width: 100px;
+            margin: 0 auto;
+            background-color: red;
+        }
+        /* 方式2 */
+        .b {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            left: 50%;
+            top: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            background-color: red;
+        }
+
+        .c {
+            margin: 0 auto;
+            background-color: red;
+        }
+
+        .d {
+            height: 100%;
+            display: table;
+            margin: 0 auto;
+            background-color: red;
+        }
+
+        .e {
+            display: inline-block;
+        }
+
+        .f {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            /* transform: translateY(-50%); */
+            background-color: green;
+        }
+
+        .g {
+            height: 100vh;
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="text-algin-center"><span>行内元素</span></div>
+
+    <div class="a">有宽度</div>
+    <div class="b">有宽度</div>
+
+    <table class="c">
+        <td>table标签</tr>
+    </table>
+
+    <div class="d"><span style="display: table-cell;vertical-align: middle;">
+            <div>table属性</div>
+        </span></div>
+    <div style="text-align: center;">
+        <div class="e">inline-block</div>
+    </div>
+    <div class="f">tranform</div>
+    <div class="g">
+        <div>flex</div>
+    </div>
+
+
 </body>
+
 </html>
