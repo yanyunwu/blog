@@ -65,10 +65,23 @@ class BinarySearchTree {
     }
     // 中序遍历
     _midOrderNode() {
-        if (node) {
-            this._preOrderNode(node.left);
-            this.show += node.key + ' ';
-            this._preOrderNode(node.right);
+        let p = this.root;
+        let s = [];
+        while (s.length || p) {
+            while (p.left){
+                s.push(p);
+                p = p.left;
+            }
+
+            p = s.pop();
+            console.log(p.key);
+
+            p = s.pop();
+            console.log(p.key);
+
+            if(p.right){
+                p = p.right;
+            }
         }
     }
 
@@ -178,5 +191,6 @@ class BinarySearchTree {
     }
 }
 
-// const tree = new BinarySearchTree();
-// tree.insert(1).insert(2).insert(3)
+const tree = new BinarySearchTree();
+tree.insert(1).insert(2).insert(3);
+tree._midOrderNode();
