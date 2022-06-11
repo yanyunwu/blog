@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="./Promise.js"></script>
+
+</head>
+
+<body>
+	<script>
+
+		/* new Promise((resolve, reject) => {
+				// resolve("成功");
+				reject("失败");
+		}).then(value => {
+				// console.log(value);
+				// return new Promise((resolve, reject) => {
+				//     resolve("成功2");
+				// });
+		}, reason => {
+				// console.log(reason);
+				// return new Promise((resolve, reject) => {
+				//     resolve("成功2");
+				//     // reject("失败2")
+				// });
+				// throw new Error("失败2");
+				// console.log(Promise.reject("abc"));
+				// Promise.reject("abc").then(null, r => {
+				//     console.log(r);
+				// })
+				asd
+				// throw new Error("newerror!");
+				return Promise.reject("abc");
+				// return Promise.resolve("aaa");
+		}).then(value => {
+				console.log("成功3" + value);
+		}, null).catch(e => {
+				console.log("e" + " " + e);
+		}) */
+
+		/*new Promise((resolve, reject) => {
+				 resolve("yes");
+		 })
+				 .then(value => {
+						 setTimeout(() => {
+								 console.log(value);
+						 }, 1000);
+						 return "yes2";
+				 }, reason => { })
+				 .then(value => {
+						 console.log(value);
+				 }, null)
+				 .catch(e => {
+						 console.log(e.message);
+				 });*/
+		//有不成功的也返回
+		// Promise.allSettled([123, 234]).then(value => {
+		// 	console.log(value);
+		// });
+		// //返回最快的
+		// Promise.race([Promise.reject("1234"), Promise.reject("123")]).then(value => {
+		// 	console.log(value);
+		// }, reason => {
+		// 	console.log(reason);
+		// });
+		console.log("开始");
+		new MyPromise((resolve, reject) => {
+			// setTimeout(_ => resolve(1), 0);
+			resolve(1);
+			reject(2);
+		}).then(value => {
+			console.log(value);
+			return 11;
+		}, reason => {
+			console.log(reason);
+			return 22;
+		}).then(value => {
+			console.log(value);
+		});
+		console.log("结束");
+		Promise.resolve();
+
+	</script>
+</body>
+
+</html>
