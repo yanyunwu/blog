@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .header {
+      width: 100%;
+      background: #f6d565;
+      padding: 25px 0;
+    }
+
+    .sticky {
+      position: fixed;
+      top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div style='height: 200px;'></div>
+  <div class="header"></div>
+  <div style='height: 2000px;'>
+  </div>
+
+  <script>
+    var header = document.querySelector('.header');
+    // var headerTop = header.getBoundingClientRect().top;
+    var headerTop = header.offsetTop
+    console.log(headerTop);
+    //元素（不包括margin）相对于视口 的原点（视口的上边界）的距离。 ///屏幕顶部到页面顶部的距离大于获取的原始值 
+    function onScroll(e) {
+      window.scrollY >= headerTop ? header.classList.add('sticky') : header.classList.remove('sticky')
+    }
+    document.addEventListener('scroll', onScroll)
+  </script>
+</body>
+
+</html>
