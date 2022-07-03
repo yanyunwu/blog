@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <ul>
+      <!-- 定义路由 -->
+      <li><a href="#/home">home</a></li>
+      <li><a href="#/about">about</a></li>
+
+      <!-- 渲染路由对应的 UI -->
+      <div id="routeView"></div>
+    </ul>
+  </ul>
+  <button onclick="location.hash='aaa'"> </button>
+  <script>
+    let routerView = routeView
+    window.addEventListener('hashchange', () => {
+      let hash = location.hash;
+      routerView.innerHTML = hash
+    })
+    window.addEventListener('DOMContentLoaded', () => {
+      if (!location.hash) {//如果不存在hash值，那么重定向到#/
+        location.hash = "/"
+      } else {//如果存在hash值，那就渲染对应UI
+        let hash = location.hash;
+        routerView.innerHTML = hash
+      }
+    })
+  </script>
+</body>
+
+</html>

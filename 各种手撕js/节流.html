@@ -12,19 +12,27 @@
   <button id="fd">点击</button>
   <script>
     let fd = document.getElementById('fd')
-    function throttle(fn, time = 1000) {
-      let flag = true
+    function throttle(fn, time = 1000, count = 3) {
+      // let flag = true
+      let hasCount = 0
+      let timer = null
       return function () {
-        if (flag) {
-          flag = false
+        if (hasCount < count) {
+          hasCount++
           fn.apply(this, arguments)
-          setTimeout(() => flag = true, time)
+        } else {
+          if (!timer) {
+            timer = setTimeout(() => {
+              hasCount = 0
+              timer = null
+            }, time)
+          }
         }
       }
     }
     fd.onclick = throttle(function (e) {
       console.log(this);
-    })
+    }, 2000)
   </script>
 </body>
 

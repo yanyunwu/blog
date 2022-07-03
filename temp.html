@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./temp.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script>
+    class App extends Component {
+      constructor() {
+        super({
+          mount: '#app',
+          data: {
+            text: 'hello world!',
+            num: 1,
+            num2: 2
+          }
+        })
+      }
+
+
+      render() {
+        return {
+          type: VNode.ELEMENT,
+          tag: 'span',
+          style: {},
+          childNodes: [
+            {
+              type: VNode.COMPONENT,
+              component: new HelloWorld()
+            },
+            {
+              type: VNode.ELEMENT,
+              tag: 'button',
+              onClick: (e) => {
+                this.data.num++
+                console.log(this.data.aaa);
+              },
+              childNodes: [
+                {
+                  type: VNode.TEXT_NODE,
+                  value: "增加"
+                }
+              ]
+            },
+            {
+              type: VNode.TEXT_NODE,
+              value: () => this.data.num + this.data.num2
+            },
+            {
+              type: VNode.ELEMENT,
+              tag: 'button',
+              onClick: (e) => {
+                this.data.num2--
+              },
+              childNodes: [
+                {
+                  type: VNode.TEXT_NODE,
+                  value: "减少"
+                }
+              ]
+            }
+          ]
+        }
+
+        return `
+          <span>
+            <button onClick={ this.data.num++ } ></button>
+              { this.data.num + this.data.num2 }
+            <button onClick={ this.data.num2-- } ></button>
+          </span>
+        `
+
+      }
+    }
+
+
+    class HelloWorld extends Component {
+      constructor() {
+        super({
+          data: {
+            text: '子组件'
+          }
+        })
+      }
+
+      render() {
+        return {
+          type: VNode.ELEMENT,
+          tag: 'h1',
+          onClick: (e) => {
+            this.data.text = '子组件响应式'
+            console.log(e);
+          },
+          childNodes: [
+            {
+              type: VNode.TEXT_NODE,
+              value: () => this.data.text
+            }
+          ]
+        }
+      }
+    }
+
+
+    new App()
+  </script>
+</body>
+
+</html>
