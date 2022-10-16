@@ -49,7 +49,7 @@ addTask(400, '4')// output: 2 3 1 4 */
 // 1200ms时，4完成，输出4
 
 
-class Scheduler {
+/* class Scheduler {
   constructor() {
     this.task = []
     this.cache = []
@@ -91,4 +91,58 @@ add(1000, 2)
 add(1000, 3)
 add(15000, 4)
 add(3000, 5)
-add(1000, 6)
+add(1000, 6) */
+
+
+
+class Scheduler {
+  constructor(max) {
+    this.task = []
+    this.catch = []
+    this.max = max
+  }
+
+  addTask(fn) {
+    return new Promise(resolve => {
+      fn.resolve = resolve
+      if (this.task.length < this.max) {
+        this.runTask(fn)
+      } else {
+        this.catch.push(fn)
+      }
+    })
+  }
+
+  runTask(fn) {
+    this.task.push(fn)
+    fn().then(value => {
+      fn.resolve(value)
+      this.removeTask(fn)
+      if (this.catch.length) {
+        this.runTask(this.catch.shift())
+      }
+    })
+  }
+
+  removeTask(fn) {
+    this.task = this.task.filter(item => item != fn)
+  }
+}
+
+let tasks = new Scheduler(3)
+function add(num, time) {
+  tasks.addTask(
+    () => new Promise(resolve => {
+      setTimeout(resolve, time, num)
+    })
+  ).then(console.log)
+}
+
+add(1, 1000)
+add(2, 10000)
+add(3, 1000)
+add(4, 1000)
+add(3, 1000)
+add(4, 1000)
+add(3, 1000)
+add(4, 1000)

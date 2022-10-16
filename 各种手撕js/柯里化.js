@@ -1,10 +1,17 @@
-function add(a, b) {
-  return function (c) {
-    return a + b + c
+function sum() {
+  let list = [...arguments]
+  return function fn(...arg) {
+    if (arg.length) {
+      list.push(...arg)
+      return fn
+    }
+
+    return list.reduce((pre, num) => pre + num, 0)
   }
 }
 
-console.log(add(2, 3)(4));
+
+console.log(sum(0)(1, 2)(8)());
 
 Promise.myall = function (list) {
   let count = 0

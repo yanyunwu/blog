@@ -23,8 +23,9 @@
   <script>
     let routerView = routeView
     window.addEventListener('hashchange', () => {
-      let hash = location.hash;
-      routerView.innerHTML = hash
+      console.log(location.hash);
+      // let hash = location.hash;
+      // routerView.innerHTML = hash
     })
     window.addEventListener('DOMContentLoaded', () => {
       if (!location.hash) {//如果不存在hash值，那么重定向到#/
